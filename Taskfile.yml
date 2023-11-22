@@ -1,0 +1,37 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars: {}
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+    silent: true
+  nixas:
+    desc: Apply configuration changes [`configuration.nix`] for this system
+    cmds:
+      - ./apply-system.sh
+  nixau:
+    desc: Apply user changes [`home.nix`] for this system
+    cmds:
+      - ./apply-users.sh
+  nixus:
+    desc: Apply system channel updates for the configuration
+    cmds:
+      - ./update-system.sh
+  nixuu:
+    desc: Apply system channel updates for the users
+    cmds:
+      - ./update-users.sh
+  nixgca:
+    desc: Remove ALL previous generation
+    cmds:
+      - nix-collect-garbage --delete-old
+      - duf
+  nixgc30:
+    desc: Remove generations older than 30 days
+    cmds:
+      - nix-collect-garbage --delete-older-than 30d
+      - duf
