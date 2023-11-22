@@ -8,6 +8,7 @@
   
   ## IMPORTS
   imports = [
+    ./imports/bash.nix
     ./imports/git.nix
     ./imports/starship.nix
     "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
