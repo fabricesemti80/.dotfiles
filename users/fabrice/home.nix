@@ -9,6 +9,7 @@
   ## IMPORTS
   imports = [
     ./imports/git.nix
+    ./imports/starship.nix
     "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
   ];
 
@@ -28,6 +29,7 @@
     direnv
     git
     exa
+    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -44,6 +46,20 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    # # Install Nerd Fonts (FiraCode in this example)
+    # (pkgs.callPackage (pkgs.fetchFromGitHub {
+    #   owner = "ryanoasis";
+    #   repo = "nerd-fonts";
+    #   rev = "v3.1.0"; # Replace with the desired version
+    #   sha256 = "sha256-ODi4oND5sSrv7tEbUqwIKjGwpDs1eCl2GWmhUQSVENg=";
+    # }) {}).FiraCode # Include FiraCode font
+    # (pkgs.callPackage (pkgs.fetchFromGitHub {
+    #   owner = "ryanoasis";
+    #   repo = "nerd-fonts";
+    #   rev = "v3.1.0";
+    #   sha256 = "sha256-ODi4oND5sSrv7tEbUqwIKjGwpDs1eCl2GWmhUQSVENg=";
+    # }) {}).JetBrainsMono # Include JetBrainsMono font
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
