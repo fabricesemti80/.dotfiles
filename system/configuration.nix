@@ -139,7 +139,6 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-
   ## FONTS
   fonts.fontconfig.enable = true;
 
