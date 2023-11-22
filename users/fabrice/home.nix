@@ -8,7 +8,7 @@
   
   ## IMPORTS
   imports = [
-    ./imports/bash.nix
+    ./imports/bash.nix 
     ./imports/git.nix
     ./imports/starship.nix
     "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
@@ -27,10 +27,24 @@
   # environment.
   home.packages = with pkgs; [
     alacritty
+    bat
+    btop
+    cmatrix
     direnv
-    git
+    duf
     exa
+    git
+    git-crypt
+    go-task
+    gnupg
+    httpie
+    neofetch
+    nixpkgs-fmt
+    pinentry_qt
+    tree
+    tmux
     vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+    wget
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./fonts.nix   
     ];
 
   # Bootloader.
@@ -87,7 +88,8 @@
       curl
       firefox
       nano
-    #  thunderbird
+      nixpkgs-fmt
+      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
     ];
   };
   
@@ -136,6 +138,10 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+
+  ## FONTS
+  fonts.fontconfig.enable = true;
 
   ## NIX SETTINGS - https://nixos.wiki/wiki/Nix_command
   nix.settings.experimental-features = [ "nix-command" "flakes"];
