@@ -14,8 +14,7 @@ let
       cp DMMonoNerdFont/* $out/share/fonts/truetype
     '';
   };
-in
-{
+in {
   fonts = {
     enableDefaultFonts = true;
     fonts = with pkgs; [

@@ -5,12 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./fonts.nix   
-      "${builtins.fetchTarball "https://github.com/Mic92/sops-nix/archive/master.tar.gz"}/modules/sops"
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./fonts.nix
+    "${
+      builtins.fetchTarball
+      "https://github.com/Mic92/sops-nix/archive/master.tar.gz"
+    }/modules/sops"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -93,7 +95,7 @@
       vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
     ];
   };
-  
+
   ## SSH Users
   users.users."fabrice".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com" # content of authorized_keys file
@@ -116,10 +118,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -144,7 +147,7 @@
   fonts.fontconfig.enable = true;
 
   ## NIX SETTINGS - https://nixos.wiki/wiki/Nix_command
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
