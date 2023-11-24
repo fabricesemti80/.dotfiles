@@ -29,6 +29,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    age
     alacritty
     bat
     btop
@@ -45,6 +46,7 @@
     nixfmt
     nixpkgs-fmt
     pinentry_qt
+    sops
     tree
     tmux
     vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
