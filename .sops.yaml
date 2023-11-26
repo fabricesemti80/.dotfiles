@@ -1,7 +1,9 @@
 keys:
   - &primary age1pe3qfuzzgkmfn0yg9ezehw2kkftaj30evvck705hs9gmdv3vhqdsu44hl2
+  - &machine_vm age1xpxccuca946sryl28h89wjuhxmthyuyyqxgwrwsnkqlhlf22jvasvwyyhz
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *primary
+      - *machine_vm

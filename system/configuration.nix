@@ -149,6 +149,23 @@
   ## NIX SETTINGS - https://nixos.wiki/wiki/Nix_command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  ## SOPS
+  # path to the file containing secrets
+  sops.defaultSopsFile = ../secrets/example.yaml;
+  # path to an automatically generated (by the OS) SSH key; do this on ALL machine that needs the secrets!
+  # run: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+  # and add the key to the .sops.yaml
+  # to activate this (has to be done BEFORE the encryption!)
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  # Auto-generate
+  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
+  # This will generate a new key if the key specified above does not exist
+  sops.age.generateKey = true;
+
+  # This is the actual specification of the secrets; 'example_key' MUST exist (replace if appropriate)
+  sops.secrets.example_key = { };
+  # sops.secrets."myservice/my_subdir/my_secret" = { };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
