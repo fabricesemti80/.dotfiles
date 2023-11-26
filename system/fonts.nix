@@ -16,8 +16,8 @@ let
   };
 in {
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       corefonts
       google-fonts
       liberation_ttf
