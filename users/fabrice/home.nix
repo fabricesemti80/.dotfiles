@@ -11,10 +11,10 @@
     ./imports/bash.nix
     ./imports/git.nix
     ./imports/starship.nix
-    "${
-      fetchTarball
-      "https://github.com/msteen/nixos-vscode-server/tarball/master"
-    }/modules/vscode-server/home.nix"
+    # "${
+    #   fetchTarball
+    #   "https://github.com/msteen/nixos-vscode-server/tarball/master"
+    # }/modules/vscode-server/home.nix"
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -36,7 +36,7 @@
     cmatrix
     direnv
     duf
-    exa
+    # exa
     git
     git-crypt
     go-task
@@ -45,7 +45,7 @@
     neofetch
     nixfmt
     nixpkgs-fmt
-    pinentry_qt
+    pinentry-qt
     sops
     tree
     tmux
@@ -112,9 +112,6 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-
-  ## SERVICES
-  services.vscode-server.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
