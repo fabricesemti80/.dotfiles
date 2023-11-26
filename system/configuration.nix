@@ -146,7 +146,8 @@
   ## FONTS
   fonts.fontconfig.enable = true;
 
-  ## NIX SETTINGS - https://nixos.wiki/wiki/Nix_command
+  ## Make ready for NixFlakes!
+  nix.package = pkgs.nixFlakes;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   ## SOPS
