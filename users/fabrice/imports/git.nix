@@ -2,7 +2,8 @@
 
 let
   gitAliases = {
-    l = "log --pretty=format:\"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [ %cn ]\" --decorate --date=short";
+    l = ''
+      log --pretty=format:"%C(yellow)%h\ %ad%Cred%d\ %Creset%s%Cblue\ [ %cn ]" --decorate --date=short'';
     a = "add";
     ap = "add -p";
     c = "commit --verbose";
@@ -17,7 +18,8 @@ let
     co = "checkout";
     cob = "checkout -b";
     # # list branches sorted by last modified
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'";
+    b =
+      "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'";
     # # list aliases
     la = "!git config -l | grep alias | cut -c 7-";
     # # https://davidwalsh.name/awesome-git-aliases
@@ -25,12 +27,22 @@ let
     last = "log - 1 HEAD";
   };
 
-in
-{
+in {
   programs.git = {
     enable = true;
     userName = "Fabrice Semti";
     userEmail = "fabrice@fabricesemti.com";
     aliases = gitAliases;
+    lfs = { enable = true; };
+    extraConfig = {
+      init.defaultBranch = "main";
+      core = {
+        # editor = "vim";
+        autocrlf = "input";
+      };
+      # commit.gpgsign = true;
+      pull.rebase = true;
+      rebase.autoStash = true;
+    };
   };
 }

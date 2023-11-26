@@ -44,7 +44,6 @@
     httpie
     neofetch
     nixfmt
-    nvim
     nixpkgs-fmt
     pinentry_qt
     sops
