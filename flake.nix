@@ -5,7 +5,7 @@
   inputs = {
 
     # Official Nix Packages repository.
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Management of user-level configuration.
     home-manager.url = "github:nix-community/home-manager";
