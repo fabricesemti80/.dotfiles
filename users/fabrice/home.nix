@@ -42,6 +42,7 @@
     go-task
     gnupg
     httpie
+    jq
     neofetch
     nixfmt
     nixpkgs-fmt
