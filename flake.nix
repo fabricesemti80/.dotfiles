@@ -47,11 +47,6 @@
             }
           ];
 
-          # # Flake for the Great Lord
-          # fabrice = home-manager.lib.homeManagerConfiguration {
-          #   inherit system pkgs;
-          #   username = "fabrice";
-          #   configuration = { imports = [ ./users/fabrice/home.nix ]; };
         };
 
       };
