@@ -1,4 +1,5 @@
 #!/bin/sh
 pushd  ~/.dotfiles
-home-manager switch -f ./users/fabrice/home.nix
+nix build .#homeManagerConfigurations.fabrice.activationPackage
+./result/activate
 popd
