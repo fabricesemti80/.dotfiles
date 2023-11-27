@@ -1,7 +1,6 @@
 { lib, ... }:
 let
-in
-{
+in {
   programs.bash = {
     enable = true;
     initExtra = ''
@@ -10,8 +9,8 @@ in
     '';
     shellAliases = {
       cat = "bat";
-      l = "exa";
-      ll = "exa -alh";
+      l = "eza";
+      ll = "eza-alh";
     };
   };
 }

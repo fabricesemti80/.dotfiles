@@ -89,6 +89,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       curl
+      eza
       firefox
       nano
       nixpkgs-fmt
