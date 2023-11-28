@@ -36,7 +36,8 @@
     cmatrix
     direnv
     duf
-    # exa
+    eza
+    fzf
     git
     git-crypt
     go-task

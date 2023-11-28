@@ -89,10 +89,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       curl
-      eza
       firefox
       nano
       nixpkgs-fmt
+      tailscale
       vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
     ];
   };
