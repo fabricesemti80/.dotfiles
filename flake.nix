@@ -1,16 +1,21 @@
 {
   description = "My Awesome System Config of Doom";
 
-  ##  >>  START INPUTS
+  ##? References Used by Flake
   inputs = {
 
-    # Official Nix Packages repository.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url =
+      ##? Unstable Nix Packages (Default)
+      "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url =
+      ##? Stable Nix Packages
+      "github:nixos/nixpkgs/release-23.05";
 
-    # Management of user-level configuration.
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
+    ##? User Environment Manager
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # SOPS Nix - https://github.com/Mic92/sops-nix
     sops-nix.url = "github:Mic92/sops-nix";
 
