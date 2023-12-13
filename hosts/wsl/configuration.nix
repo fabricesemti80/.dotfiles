@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "nixos-vm"; # Define your hostname.
+  networking.hostName = "nixos-wsl"; # Define your hostname.
 
   # Configure keymap in X11
   services.xserver = {

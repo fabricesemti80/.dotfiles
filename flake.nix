@@ -81,8 +81,8 @@
         nixos-wsl = lib.nixosSystem {
           inherit system;
           modules = [
+            ./hosts/wsl/configuration.nix
             ./hosts/defaults.nix
-            ./hosts/wsl
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
@@ -94,8 +94,8 @@
         nixos-vm = lib.nixosSystem {
           inherit system;
           modules = [
+            ./hosts/vm/configuration.nix
             ./hosts/defaults.nix
-            ./hosts/vm
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
