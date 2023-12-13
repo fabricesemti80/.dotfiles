@@ -91,6 +91,9 @@
       fzf
       tree
 
+      # Customization
+      cava
+
       # Miscellaneous
       figlet
       lolcat

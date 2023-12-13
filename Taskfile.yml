@@ -17,14 +17,14 @@ tasks:
     desc: Apply user changes [`home.nix`] for this system
     cmds:
       - ./apply-users.sh
-  nixus:
-    desc: Apply system channel updates for the configuration
-    cmds:
-      - ./update-system.sh
-  nixuu:
-    desc: Apply system channel updates for the users
-    cmds:
-      - ./update-users.sh
+  # nixus:
+  #   desc: Apply system channel updates for the configuration
+  #   cmds:
+  #     - ./update-system.sh
+  # nixuu:
+  #   desc: Apply system channel updates for the users
+  #   cmds:
+  #     - ./update-users.sh
   nixgca:
     desc: Remove ALL previous generation
     cmds:
@@ -35,3 +35,10 @@ tasks:
     cmds:
       - nix-collect-garbage --delete-older-than 30d
       - duf
+  nixall:
+    desc: Full rebuild and update
+    cmds:
+      - ./update.sh
+      - task: nixas
+      - task: nixau
+      - task: nixgca
