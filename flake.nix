@@ -41,6 +41,12 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Community scripts and utilities for Hypr projects
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   ##  >> START OUTPUTS
