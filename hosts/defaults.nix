@@ -49,6 +49,12 @@
     description = "Fabrice Semti";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      # nix tools
+      nix-info
+      nixfmt
+      nixpkgs-fmt
+      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+
       # Development Tools
       age
       bat
@@ -59,8 +65,6 @@
       go-task
       jq
       neovim
-      nixfmt
-      nixpkgs-fmt
       pinentry-qt
       ripgrep
       sops
@@ -70,7 +74,6 @@
       alacritty
       nano
       tmux
-      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
 
       # Networking
       curl
