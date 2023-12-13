@@ -49,11 +49,49 @@
     description = "Fabrice Semti";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      curl
-      nano
+      # Development Tools
+      age
+      bat
+      direnv
+      git
+      git-crypt
+      gnupg
+      go-task
+      jq
+      neovim
+      nixfmt
       nixpkgs-fmt
-      tailscale
+      pinentry-qt
+      ripgrep
+      sops
       vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+
+      # Editors and Terminal
+      alacritty
+      nano
+      tmux
+      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+
+      # Networking
+      curl
+      httpie
+      tailscale
+      wget
+
+      # System Monitoring and Utilities
+      btop
+      cmatrix
+      cowsay
+      duf
+      eza
+      fzf
+      tree
+
+      # Miscellaneous
+      figlet
+      lolcat
+      neofetch
+
     ];
   };
 

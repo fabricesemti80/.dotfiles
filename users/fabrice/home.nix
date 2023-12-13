@@ -28,67 +28,39 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    age
-    alacritty
-    bat
-    btop
-    cmatrix
-    cowsay
-    direnv
-    duf
-    eza
-    fzf
-    figlet
-    git
-    git-crypt
-    go-task
-    gnupg
-    httpie
-    jq
-    lolcat
-    neofetch
-    neovim
-    nixfmt
-    nixpkgs-fmt
-    pinentry-qt
-    ripgrep
-    sops
-    tree
-    tmux
-    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    wget
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+  home.packages = with pkgs;
+    [
+      # # Adds the 'hello' command to your environment. It prints a friendly
+      # # "Hello, world!" when run.
+      # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
 
-    # # Install Nerd Fonts (FiraCode in this example)
-    # (pkgs.callPackage (pkgs.fetchFromGitHub {
-    #   owner = "ryanoasis";
-    #   repo = "nerd-fonts";
-    #   rev = "v3.1.0"; # Replace with the desired version
-    #   sha256 = "sha256-ODi4oND5sSrv7tEbUqwIKjGwpDs1eCl2GWmhUQSVENg=";
-    # }) {}).FiraCode # Include FiraCode font
-    # (pkgs.callPackage (pkgs.fetchFromGitHub {
-    #   owner = "ryanoasis";
-    #   repo = "nerd-fonts";
-    #   rev = "v3.1.0";
-    #   sha256 = "sha256-ODi4oND5sSrv7tEbUqwIKjGwpDs1eCl2GWmhUQSVENg=";
-    # }) {}).JetBrainsMono # Include JetBrainsMono font
-  ];
+      # # Install Nerd Fonts (FiraCode in this example)
+      # (pkgs.callPackage (pkgs.fetchFromGitHub {
+      #   owner = "ryanoasis";
+      #   repo = "nerd-fonts";
+      #   rev = "v3.1.0"; # Replace with the desired version
+      #   sha256 = "sha256-ODi4oND5sSrv7tEbUqwIKjGwpDs1eCl2GWmhUQSVENg=";
+      # }) {}).FiraCode # Include FiraCode font
+      # (pkgs.callPackage (pkgs.fetchFromGitHub {
+      #   owner = "ryanoasis";
+      #   repo = "nerd-fonts";
+      #   rev = "v3.1.0";
+      #   sha256 = "sha256-ODi4oND5sSrv7tEbUqwIKjGwpDs1eCl2GWmhUQSVENg=";
+      # }) {}).JetBrainsMono # Include JetBrainsMono font
+    ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
