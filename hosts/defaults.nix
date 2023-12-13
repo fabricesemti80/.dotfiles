@@ -6,7 +6,7 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    ./fonts.nix
+
   ];
 
   # Bootloader.
@@ -145,7 +145,20 @@
   # networking.firewall.enable = false;
 
   ## FONTS
-  fonts.fontconfig.enable = true;
+
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs;
+      [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
+
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "FiraCode" ];
+        sansSerif = [ "DroidSans" ];
+        monospace = [ "FiraCode" ];
+      };
+    };
+  };
 
   ## Make ready for NixFlakes!
   nix.package = pkgs.nixFlakes;
