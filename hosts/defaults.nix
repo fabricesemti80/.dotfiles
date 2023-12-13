@@ -56,6 +56,7 @@
       vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
 
       # Development Tools
+      ansible
       age
       bat
       direnv
@@ -94,6 +95,8 @@
       figlet
       lolcat
       neofetch
+      man-pages
+      man-pages-posix
 
     ];
   };
