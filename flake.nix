@@ -78,7 +78,19 @@
       nixosConfigurations = {
 
         # Flake for the test VM
-        nixos-mk3 = lib.nixosSystem {
+        nixos-wsl = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system/configuration.nix
+            sops-nix.nixosModules.sops
+            vscode-server.nixosModules.default
+            ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
+          ];
+
+        };
+
+        # Flake for the test VM
+        nixos-vm = lib.nixosSystem {
           inherit system;
           modules = [
             ./system/configuration.nix

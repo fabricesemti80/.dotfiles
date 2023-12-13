@@ -34,20 +34,25 @@
     bat
     btop
     cmatrix
+    cowsay
     direnv
     duf
     eza
     fzf
+    figlet
     git
     git-crypt
     go-task
     gnupg
     httpie
     jq
+    lolcat
     neofetch
+    neovim
     nixfmt
     nixpkgs-fmt
     pinentry-qt
+    ripgrep
     sops
     tree
     tmux
