@@ -7,6 +7,8 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./gui.nix
+
   ];
 
   networking.hostName = "nixos-vm"; # Define your hostname.
