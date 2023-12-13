@@ -34,17 +34,18 @@
     ##? ref: https://github.com/nix-community/nixos-vscode-server
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    # ##? Official Hyprland Flake
-    # ##? Requires "hyprland.nixosModules.default" to be added the host modules
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    ##? Official Hyprland Flake
+    ##? Requires "hyprland.nixosModules.default" to be added the host modules
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
   ##  >> START OUTPUTS
-  outputs = { self, nixpkgs, home-manager, sops-nix, vscode-server, ... }:
+  outputs = { self, nixpkgs, home-manager, sops-nix, vscode-server, hyprland
+    , ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -98,6 +99,15 @@
             ./hosts/defaults.nix
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
+
+            hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+            home-manager.nixosModules.home-manager
+            {
+              # ...
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
           ];
 
