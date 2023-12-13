@@ -7,7 +7,7 @@ in {
       eval "$(direnv hook bash)"   # enable `direnv`
     '';
     shellAliases = {
-      cat = "bat";
+      cat = "bat -p";
       l = "eza";
       ll = "eza-alh";
     };
