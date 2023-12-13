@@ -39,6 +39,7 @@
     duf
     eza
     fzf
+    figlet
     git
     git-crypt
     go-task
