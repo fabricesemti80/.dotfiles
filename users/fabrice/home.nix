@@ -34,6 +34,7 @@
     bat
     btop
     cmatrix
+    cowsay
     direnv
     duf
     eza
@@ -44,10 +45,13 @@
     gnupg
     httpie
     jq
+    lolcat
     neofetch
+    neovim
     nixfmt
     nixpkgs-fmt
     pinentry-qt
+    ripgrep
     sops
     tree
     tmux
