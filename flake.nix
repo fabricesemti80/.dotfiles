@@ -1,7 +1,7 @@
 {
   description = "My Awesome System Config of Doom";
 
-  ##? References Used by Flake
+  ##? INPUTS -->
   inputs = {
 
     nixpkgs.url =
@@ -63,9 +63,14 @@
 
   };
 
-  ##  >> START OUTPUTS
-  outputs = { self, nixpkgs, home-manager, sops-nix, vscode-server, ... }:
+  ##? OUTPUTS -->
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nur, sops-nix
+    , vscode-server, ...
+    }: # TODO: add 'darwin, nixgl, nixvim, doom-emacs, hyprland, plasma-manager,' if used
+
+    ##? VARIABLES -->
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -80,6 +85,7 @@
         editor = "nvim";
       };
 
+      ##? CONFIGURATIONS -->
     in {
 
       homeManagerConfigurations = {
@@ -91,8 +97,8 @@
             ./users/fabrice/home.nix
             {
               home = {
-                username = "fabrice";
-                homeDirectory = "/home/fabrice";
+                username = vars.user;
+                homeDirectory = "/home/${vars.user}";
                 stateVersion = "23.05";
               };
             }
