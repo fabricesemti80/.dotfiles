@@ -2,6 +2,6 @@
 
 {
   imports = [ 
-    ./packages.nix
+    ./comonpackages.nix
   ];
 }

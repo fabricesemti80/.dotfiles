@@ -5,6 +5,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs;
     [
-      git
+
+      ## Development tools
+      docker                #? (Container virtualization)
+      docker-compose        #? (Container virtualization configuration) 
+    
     ];
 }
