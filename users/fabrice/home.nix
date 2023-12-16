@@ -29,35 +29,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    age
-    alacritty
-    bat
-    btop
-    cmatrix
-    cowsay
-    direnv
-    duf
-    eza
-    fzf
-    figlet
-    git
-    git-crypt
-    go-task
-    gnupg
-    httpie
-    jq
-    lolcat
-    neofetch
-    neovim
-    nixfmt
-    nixpkgs-fmt
-    pinentry-qt
-    ripgrep
-    sops
-    tree
-    tmux
-    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    wget
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

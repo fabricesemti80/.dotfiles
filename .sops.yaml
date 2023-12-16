@@ -23,7 +23,8 @@ keys:
   #    ssh root@REMOTE_HOST 'mkdir -p /var/lib/sops-nix' \
   #        && ssh -p2222 root@localhost 'cat /var/lib/sops-nix/key.txt' \
   #        | ssh root@REMOTE_HOST 'cat > /var/lib/sops-nix/key.txt'
-  - &vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
+  - &vm age10vwwse7fjh75etda00kxtsxatwq60uvy6f4vsxkpx9xm8nz5hquqn7tgck
+  - &legacy_vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
 # This section determines the keys that secrets under certain folder paths are encrypted for.
 # (AKA which keys (key_groups) can decrypt which secrets (path_regex))  
 creation_rules:
@@ -34,3 +35,4 @@ creation_rules:
       age:
       - *user_fabrice_primary
       - *vm
+      - *legacy_vm

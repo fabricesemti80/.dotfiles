@@ -5,20 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./fonts.nix
-    # "${
-    #   builtins.fetchTarball
-    #   "https://github.com/Mic92/sops-nix/archive/master.tar.gz"
-    # }/modules/sops"
-  ];
+  imports = [ ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos-vm"; # Define your hostname.
+  networking.hostName = "redeemer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -114,14 +108,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      #  wget
-    ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -153,7 +139,7 @@
 
   ## SOPS
   # path to the file containing secrets
-  sops.defaultSopsFile = ../secrets/example.yaml;
+  sops.defaultSopsFile = ../../secrets/example.yaml;
   # path to an automatically generated (by the OS) SSH key; do this on ALL machine that needs the secrets!
   # run: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
   # and add the key to the .sops.yaml
