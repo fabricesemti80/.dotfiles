@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 let
   gitAliases = {
@@ -30,7 +30,7 @@ let
 in {
   programs.git = {
     enable = true;
-    userName = "Fabrice Semti";
+    userName = "${vars.fullName}";
     userEmail = "fabrice@fabricesemti.com";
     aliases = gitAliases;
     lfs = { enable = true; };
