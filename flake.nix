@@ -10,8 +10,6 @@
     nixpkgs-unstable.url =
       "github:nixos/nixpkgs/nixos-unstable"; # Stable Nix Packages
 
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/release-23.05"; # Stable Nix Packages
-
     nur = { # NUR Community Packages
       url =
         "github:nix-community/NUR"; # Requires "nur.nixosModules.nur" to be added to the host modules
@@ -96,7 +94,7 @@
         # This is my main user account on all hosts
         fabrice = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs vars; };
           modules = [
             ./users/fabrice/home.nix
             {
@@ -125,7 +123,7 @@
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
           ];
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs vars; };
         };
 
       };

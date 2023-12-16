@@ -67,9 +67,7 @@
   #
   #  /etc/profiles/per-user/fabrice/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+  home.sessionVariables = { EDITOR = vars.editor; };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
