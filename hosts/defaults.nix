@@ -49,50 +49,6 @@
     description = "Fabrice Semti";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # nix tools
-      nix-info
-      nixfmt
-      nixpkgs-fmt
-      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-
-      # Development Tools
-      ansible
-      age
-      bat
-      direnv
-      git
-      git-crypt
-      gnupg
-      go-task
-      jq
-      neovim
-      pinentry-qt
-      ripgrep
-      sops
-      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-
-      # Editors and Terminal
-      alacritty
-      nano
-      tmux
-
-      # Networking
-      curl
-      httpie
-      tailscale
-      wget
-
-      # System Monitoring and Utilities
-      btop
-      cmatrix
-      cowsay
-      duf
-      eza
-      fzf
-      tree
-
-      # Customization
-      cava
 
       # Miscellaneous
       figlet
@@ -122,11 +78,55 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      #  wget
-    ];
+  environment.systemPackages = with pkgs; [
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    # nix tools
+    nix-info
+    nixfmt
+    nixpkgs-fmt
+    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+
+    # Development Tools
+    ansible
+    age
+    bat
+    direnv
+    git
+    git-crypt
+    gnupg
+    go-task
+    jq
+    neovim
+    pinentry-qt
+    ripgrep
+    sops
+    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+
+    # Editors and Terminal
+    alacritty
+    nano
+    tmux
+
+    # Networking
+    curl
+    httpie
+    tailscale
+    wget
+
+    # System Monitoring and Utilities
+    btop
+    cmatrix
+    cowsay
+    duf
+    eza
+    fzf
+    tree
+
+    # Customization
+    cava
+
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
