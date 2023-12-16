@@ -148,7 +148,7 @@
 
   ## SOPS
   # path to the file containing secrets
-  sops.defaultSopsFile = ../secrets/example.yaml;
+  sops.defaultSopsFile = ../../secrets/example.yaml;
   # path to an automatically generated (by the OS) SSH key; do this on ALL machine that needs the secrets!
   # run: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
   # and add the key to the .sops.yaml
