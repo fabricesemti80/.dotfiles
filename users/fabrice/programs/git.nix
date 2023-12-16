@@ -44,5 +44,6 @@ in {
       pull.rebase = true;
       rebase.autoStash = true;
     };
+    diff-so-fancy.enable = true;
   };
 }
