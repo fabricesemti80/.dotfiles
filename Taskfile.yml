@@ -39,7 +39,17 @@ tasks:
     cmds:
       - nix-collect-garbage --delete-old
       - duf
-  
+
+  nix-flake-selective-update:
+    desc: Select individual package sources for update from the flake
+    cmds:
+      - nix run github:vimjoyer/nix-update-input
+
+  nix-flake-meta:
+    desc: Check flake metadata
+    cmds:
+      - nix flake metadata
+
   nix-flake-full:
     desc: Apply configuration using $(hostname) and 'fabrice' username
     cmds:

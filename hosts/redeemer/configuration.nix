@@ -5,8 +5,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-  ];
+  imports = [ ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
