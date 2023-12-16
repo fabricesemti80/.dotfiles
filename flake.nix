@@ -56,10 +56,9 @@
 
       homeManagerConfigurations = {
 
-        # Flake for the Great Lord
+        # This is my main user account on all hosts
         fabrice = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
-
           modules = [
             ./users/fabrice/home.nix
             {
@@ -70,25 +69,29 @@
               };
             }
           ];
-
         };
+
+        #TODO: Other users TBA
 
       };
 
       nixosConfigurations = {
 
-        # Flake for the test VM
+        # Redeemer is a test VM on Proxmox
         redeemer = lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/default.nix
-            ./hosts/redeemer
+            ./hosts/default.nix                     # default configuration for ALL hosts
+            ./hosts/common                          # default packages for ALL hosts            
+            ./hosts/redeemer                        # configuration specific to THIS host
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
           ];
-
         };
+
+         #TODO: Other hosts TBA
+
       };
     };
 }

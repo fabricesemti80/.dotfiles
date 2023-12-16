@@ -5,33 +5,46 @@ version: "3"
 vars: {}
 
 tasks:
+
+############## & if not built system yet,m run: 'nix-shell -p go-task' to load Go Tasks!
+
   default:
     cmds:
       - task --list-all
     silent: true
-  nixas:
-    desc: Apply configuration changes [`configuration.nix`] for this system
+
+  nix-flake-update:
+    desc: Update flake system
     cmds:
-      - ./apply-system.sh
-  nixau:
-    desc: Apply user changes [`home.nix`] for this system
+      - nix flake update
+
+  nix-host-redeemer:
+    desc: Apply configuration --> host / redeemer
     cmds:
-      - ./apply-users.sh
-  nixus:
-    desc: Apply system channel updates for the configuration
+      - sudo nixos-rebuild switch --flake .#redeemer
+
+  nix-host-current:
+    desc: Apply configuration --> host / $(hostname)
     cmds:
-      - ./update-system.sh
-  nixuu:
-    desc: Apply system channel updates for the users
+      - sudo nixos-rebuild switch --flake .#    
+ 
+  nix-user-fabrice:
+    desc: Apply configuration --> user / fabrice
     cmds:
-      - ./update-users.sh
-  nixgca:
-    desc: Remove ALL previous generation
+      - nix build .#homeManagerConfigurations.fabrice.activationPackage 
+      - ./result/activate
+
+  nix-gc:
+    desc: Clean previous Nix generations and display results
     cmds:
       - nix-collect-garbage --delete-old
       - duf
-  nixgc30:
-    desc: Remove generations older than 30 days
+  
+  nix-flake-full:
+    desc: Apply configuration using $(hostname) and 'fabrice' username
     cmds:
-      - nix-collect-garbage --delete-older-than 30d
-      - duf
+      - task: nix-flake-update
+      - task: nix-host-current
+      - task: nix-user-fabrice
+      - task: nix-gc
+
