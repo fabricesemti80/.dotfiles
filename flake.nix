@@ -78,22 +78,11 @@
       nixosConfigurations = {
 
         # Flake for the test VM
-        nixos-wsl = lib.nixosSystem {
+        redeemer = lib.nixosSystem {
           inherit system;
           modules = [
-            ./system/configuration.nix
-            sops-nix.nixosModules.sops
-            vscode-server.nixosModules.default
-            ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
-          ];
-
-        };
-
-        # Flake for the test VM
-        nixos-vm = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./system/configuration.nix
+            ./hosts/default.nix
+            ./hosts/redeemer
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })

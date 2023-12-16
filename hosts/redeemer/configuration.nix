@@ -6,19 +6,14 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./fonts.nix
-    # "${
-    #   builtins.fetchTarball
-    #   "https://github.com/Mic92/sops-nix/archive/master.tar.gz"
-    # }/modules/sops"
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos-vm"; # Define your hostname.
+  networking.hostName = "redeemer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
