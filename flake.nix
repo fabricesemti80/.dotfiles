@@ -81,6 +81,7 @@
       vars = { # Variables Used In Flake
         user = "fabrice";
         fullName = "Fabrice Semti";
+        fullEmail = "emilfabrice@gmail.com";
         # location = "$HOME/.setup"; #TODO: Change when final
         terminal = "kitty";
         editor = "nvim";

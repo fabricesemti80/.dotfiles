@@ -31,7 +31,7 @@ in {
   programs.git = {
     enable = true;
     userName = "${vars.fullName}";
-    userEmail = "fabrice@fabricesemti.com";
+    userEmail = "${vars.fullEmail}";
     aliases = gitAliases;
     lfs = { enable = true; };
     extraConfig = {
