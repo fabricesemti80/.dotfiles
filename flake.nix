@@ -65,18 +65,20 @@
 
   ##? OUTPUTS -->
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nur, sops-nix
-    , vscode-server, ...
-    }: # TODO: add 'darwin, nixgl, nixvim, doom-emacs, hyprland, plasma-manager,' if used
+    , vscode-server, ... }@inputs:
 
     ##? VARIABLES -->
     let
+
       inherit (self) outputs;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
-      lib = nixpkgs.lib;
+      lib = nixpkgs.lib // home-manager.lib;
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        });
 
       vars = { # Variables Used In Flake
         user = "fabrice";
@@ -88,11 +90,13 @@
       ##? CONFIGURATIONS -->
     in {
 
+      #? these are the users
       homeManagerConfigurations = {
 
         # This is my main user account on all hosts
         fabrice = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./users/fabrice/home.nix
             {
@@ -105,15 +109,14 @@
           ];
         };
 
-        #TODO: Other users TBA
-
       };
 
+      #? these are the hosts
       nixosConfigurations = {
 
         # Redeemer is a test VM on Proxmox
         redeemer = lib.nixosSystem {
-          inherit system;
+          # inherit system;
           modules = [
             ./hosts/default.nix # default configuration for ALL hosts
             ./hosts/common # default packages for ALL hosts
@@ -122,9 +125,8 @@
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
           ];
+          specialArgs = { inherit inputs outputs; };
         };
-
-        #TODO: Other hosts TBA
 
       };
     };
