@@ -34,13 +34,6 @@
     ##? ref: https://github.com/nix-community/nixos-vscode-server
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    # ##? Official Hyprland Flake
-    # ##? Requires "hyprland.nixosModules.default" to be added the host modules
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
   };
 
   ##  >> START OUTPUTS
@@ -81,16 +74,16 @@
         redeemer = lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/default.nix                     # default configuration for ALL hosts
-            ./hosts/common                          # default packages for ALL hosts            
-            ./hosts/redeemer                        # configuration specific to THIS host
+            ./hosts/default.nix # default configuration for ALL hosts
+            ./hosts/common # default packages for ALL hosts
+            ./hosts/redeemer # configuration specific to THIS host
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
           ];
         };
 
-         #TODO: Other hosts TBA
+        #TODO: Other hosts TBA
 
       };
     };
