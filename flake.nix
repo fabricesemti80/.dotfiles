@@ -83,6 +83,8 @@
         fullName = "Fabrice Semti";
         fullEmail = "emilfabrice@gmail.com";
         # location = "$HOME/.setup"; #TODO: Change when final
+        pubKey =
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com";
         terminal = "kitty";
         editor = "nvim";
       };

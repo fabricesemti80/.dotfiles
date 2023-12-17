@@ -29,9 +29,8 @@ let
 
 in {
   home.file.".ssh/id_ed25519.pub".text =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com"; # TODO: move to SSH config
-  home.file.".ssh/allowed_signers".text =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com";
+    "${vars.pubKey}"; # TODO: move to SSH config
+  home.file.".ssh/allowed_signers".text = "${vars.pubKey}";
 
   programs.git = {
     enable = true;
