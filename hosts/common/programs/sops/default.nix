@@ -35,6 +35,11 @@
         # group = vars.user.group;
         path = "/home/${vars.user}/.ssh/secondary_key_fs";
       };
+      private_gpg = {
+        owner = vars.user;
+        # group = vars.user.group;
+        path = "/home/${vars.user}/.gnupg/private.gpg";
+      };
     };
 
     # sops.secrets."myservice/my_subdir/my_secret" = { };

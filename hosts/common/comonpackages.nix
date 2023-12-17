@@ -22,6 +22,7 @@
     ### Security
     sops # ? (Simple and flexible tool for managing secrets)
     gnupg # ? (GNU Privacy Guard - encryption and signing tool)
+    pinentry-qt # ? Qt-based PIN or passphrase entry dialog for GnuPG
 
     ## Terminal enhancement
     kitty # ? (Fast, featureful, GPU based terminal emulator)

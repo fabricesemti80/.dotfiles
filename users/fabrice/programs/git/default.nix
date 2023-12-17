@@ -32,6 +32,7 @@ in {
     enable = true;
     userName = "${vars.fullName}";
     userEmail = "${vars.fullEmail}";
+    signing.key = "79C2C5311CCE42F5"; # gpg - -list-key
     aliases = gitAliases;
     lfs = { enable = true; };
     extraConfig = {
@@ -40,7 +41,7 @@ in {
         # editor = "vim";
         autocrlf = "input";
       };
-      # commit.gpgsign = true;
+      commit.gpgsign = true;
       pull.rebase = true;
       rebase.autoStash = true;
     };
