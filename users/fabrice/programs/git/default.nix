@@ -28,11 +28,16 @@ let
   };
 
 in {
+  home.file.".ssh/id_ed25519.pub".text =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com"; # TODO: move to SSH config
+  home.file.".ssh/allowed_signers".text =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com";
+
   programs.git = {
     enable = true;
     userName = "${vars.fullName}";
     userEmail = "${vars.fullEmail}";
-    signing.key = "79C2C5311CCE42F5"; # gpg - -list-key
+    # signing.key = "79C2C5311CCE42F5"; # gpg - -list-key
     aliases = gitAliases;
     lfs = { enable = true; };
     extraConfig = {
@@ -41,7 +46,12 @@ in {
         # editor = "vim";
         autocrlf = "input";
       };
+
       commit.gpgsign = true;
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      user.signingkey = "~/.ssh/id_ed25519.pub";
+
       pull.rebase = true;
       rebase.autoStash = true;
     };
