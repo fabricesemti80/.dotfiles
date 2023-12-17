@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 {
-  imports = [ 
-    ./comonpackages.nix
-  ];
+  imports = [ ./comonpackages.nix ./programs ];
 }
