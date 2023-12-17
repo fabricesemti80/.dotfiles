@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 let
   gitAliases = {
@@ -30,8 +30,8 @@ let
 in {
   programs.git = {
     enable = true;
-    userName = "Fabrice Semti";
-    userEmail = "fabrice@fabricesemti.com";
+    userName = "${vars.fullName}";
+    userEmail = "${vars.fullEmail}";
     aliases = gitAliases;
     lfs = { enable = true; };
     extraConfig = {
@@ -43,6 +43,10 @@ in {
       # commit.gpgsign = true;
       pull.rebase = true;
       rebase.autoStash = true;
+    };
+    diff-so-fancy = {
+      enable = true;
+      changeHunkIndicators = true;
     };
   };
 }

@@ -13,6 +13,13 @@ tasks:
       - task --list-all
     silent: true
 
+  nix-flake:
+    desc: Apply configuration using $(hostname) and 'fabrice' username
+    cmds:
+      - task: nix-host-current
+      - task: nix-user-fabrice
+
+
   nix-flake-update:
     desc: Update flake system
     cmds:
@@ -51,7 +58,7 @@ tasks:
       - nix flake metadata
 
   nix-flake-full:
-    desc: Apply configuration using $(hostname) and 'fabrice' username
+    desc: Update, apply all configuration and collect garbage
     cmds:
       - task: nix-flake-update
       - task: nix-host-current
