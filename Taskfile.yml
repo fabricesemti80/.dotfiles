@@ -19,6 +19,7 @@ tasks:
       - git add .
       - task: nix-host-current
       - task: nix-user-fabrice
+      - git add .
 
 
   nix-flake-update:
