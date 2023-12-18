@@ -28,9 +28,13 @@ let
   };
 
 in {
-  home.file.".ssh/id_ed25519.pub".text =
-    "${vars.pubKey}"; # TODO: move to SSH config
-  home.file.".ssh/allowed_signers".text = "${vars.pubKey}";
+  home.file = {
+    ".ssh/id_ed25519.pub".text = "${vars.pubKey}"; # TODO: move to SSH config
+    ".ssh/allowed_signers".text = "${vars.pubKey}";
+    ".gitignore".text = ''
+      vscode/**
+    '';
+  };
 
   programs.git = {
     enable = true;
