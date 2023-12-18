@@ -6,6 +6,8 @@
     ./packages.nix
     ./sops.nix
     ./i18n.nix
+    ./ssh.nix
+    ./tailscale.nix
 
   ];
 }
