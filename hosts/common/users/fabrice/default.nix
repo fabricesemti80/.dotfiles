@@ -4,7 +4,7 @@ let
     builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
 
-  users.mutableUsers = false;
+  # users.mutableUsers = false;
   users.users.fabrice = {
     isNormalUser = true;
     # shell = pkgs.fish;
