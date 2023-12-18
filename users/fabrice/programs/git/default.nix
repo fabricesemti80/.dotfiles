@@ -28,10 +28,15 @@ let
   };
 
 in {
+  home.file.".ssh/id_ed25519.pub".text =
+    "${vars.pubKey}"; # TODO: move to SSH config
+  home.file.".ssh/allowed_signers".text = "${vars.pubKey}";
+
   programs.git = {
     enable = true;
     userName = "${vars.fullName}";
     userEmail = "${vars.fullEmail}";
+    # signing.key = "79C2C5311CCE42F5"; # gpg - -list-key
     aliases = gitAliases;
     lfs = { enable = true; };
     extraConfig = {
@@ -40,7 +45,13 @@ in {
         # editor = "vim";
         autocrlf = "input";
       };
-      # commit.gpgsign = true;
+
+      # ? ref: "https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/"
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      user.signingkey = "~/.ssh/id_ed25519.pub";
+
       pull.rebase = true;
       rebase.autoStash = true;
     };

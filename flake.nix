@@ -36,11 +36,20 @@
     #   inputs.emacs-overlay.follows = "emacs-overlay";
     # };
 
-    # hyprland = { # Official Hyprland Flake #TODO: activate if used
-    #   url =
-    #     "github:hyprwm/Hyprland"; # Requires "hyprland.nixosModules.default" to be added the host modules
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprwm-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland-plugins = {
+      url = "github:misterio77/hyprland-plugins/flake-winwrap";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     # plasma-manager = { # KDE Plasma User Settings Generator #TODO: activate if used
     #   url = "github:pjones/plasma-manager";
@@ -83,6 +92,8 @@
         fullName = "Fabrice Semti";
         fullEmail = "emilfabrice@gmail.com";
         # location = "$HOME/.setup"; #TODO: Change when final
+        pubKey =
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com";
         terminal = "kitty";
         editor = "nvim";
       };

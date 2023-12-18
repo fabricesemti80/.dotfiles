@@ -9,7 +9,6 @@
     git # ? (Version control system)
     git-crypt # ? (Transparent file encryption in git)
     go-task # ? (Task runner / build tool)
-    gnupg # ? (GNU Privacy Guard - encryption and signing tool)
     hugo # ? (Static site generator)
     httpie # ? (Command-line HTTP client)
     jq # ? (Lightweight and flexible command-line JSON processor)
@@ -18,8 +17,12 @@
     nixpkgs-fmt # ? (Formatter for Nixpkgs code)
     pinentry-qt # ? (Qt-based PIN or passphrase entry dialog for GnuPG)
     ripgrep # ? (Fast and efficient text search tool)
-    sops # ? (Simple and flexible tool for managing secrets)
     wget # ? (Command-line utility to download files from the web)
+
+    ### Security
+    sops # ? (Simple and flexible tool for managing secrets)
+    gnupg # ? (GNU Privacy Guard - encryption and signing tool)
+    pinentry-qt # ? Qt-based PIN or passphrase entry dialog for GnuPG
 
     ## Terminal enhancement
     kitty # ? (Fast, featureful, GPU based terminal emulator)

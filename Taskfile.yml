@@ -16,8 +16,10 @@ tasks:
   nix-flake:
     desc: Apply configuration using $(hostname) and 'fabrice' username
     cmds:
+      - git add .
       - task: nix-host-current
       - task: nix-user-fabrice
+      - git add .
 
 
   nix-flake-update:
@@ -61,7 +63,6 @@ tasks:
     desc: Update, apply all configuration and collect garbage
     cmds:
       - task: nix-flake-update
-      - task: nix-host-current
-      - task: nix-user-fabrice
+      - task: nix-flake
       - task: nix-gc
 

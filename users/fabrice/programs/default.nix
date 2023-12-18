@@ -1,5 +1,5 @@
 { config, lib, pkgs, vars, ... }:
 
 {
-  imports = [ ./bash.nix ./git ./starship ];
+  imports = [ ./bash ./git ./starship ./gpg ];
 }

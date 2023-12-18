@@ -10,7 +10,7 @@ in {
     shellAliases = {
       cat = "bat";
       l = "eza";
-      ll = "eza-alh";
+      ll = "eza -alh";
     };
   };
 }
