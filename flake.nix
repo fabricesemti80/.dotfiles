@@ -10,6 +10,12 @@
     nixpkgs-unstable.url =
       "github:nixos/nixpkgs/nixos-unstable"; # Stable Nix Packages
 
+    hardware.url = "github:nixos/nixos-hardware";
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    nix-colors.url = "github:misterio77/nix-colors";
+
     nur = { # NUR Community Packages
       url =
         "github:nix-community/NUR"; # Requires "nur.nixosModules.nur" to be added to the host modules
@@ -100,6 +106,8 @@
 
       ##? CONFIGURATIONS -->
     in {
+
+      inherit lib;
 
       #? these are the users
       homeManagerConfigurations = {
