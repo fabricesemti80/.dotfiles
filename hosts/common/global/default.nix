@@ -5,6 +5,7 @@
 
     ./packages.nix
     ./sops.nix
+    ./i18n.nix
 
   ];
 }
