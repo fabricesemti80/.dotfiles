@@ -25,21 +25,6 @@
   # Set your time zone.
   time.timeZone = "Europe/London";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
-  };
-
   # Configure keymap in X11
   services.xserver = {
     enable = true;
@@ -73,30 +58,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fabrice = {
-    isNormalUser = true;
-    description = "Fabrice Semti";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      curl
-      firefox
-      nano
-      nixpkgs-fmt
-      tailscale
-      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    ];
-  };
-
-  ## SSH Users
-  users.users."fabrice".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com" # content of authorized_keys file
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDl0ivGFV8D/M53/qvRRkfxkKgY3635xDiiLQwFgrWon fabrice@fabricesemti.com"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIX2Y3nmVHNxNCNV+WXHeBEcXFS0XYDnNWxzm9oAIyFa fabrice@fabricesemti.com"
-    # note: ssh-copy-id will add user@your-machine after the public key
-    # but we can remove the "@your-machine" part
-  ];
-
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "fabrice";
@@ -115,14 +76,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Enable Tailscale service
-  services.tailscale.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

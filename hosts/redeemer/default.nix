@@ -1,9 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+
+    ../common/global
+
+    ../common/users/fabrice
+
+    ../common/optional/docker.nix
+
     ./configuration.nix
-    ./packages.nix  
     ./hardware-configuration.nix
   ];
 }

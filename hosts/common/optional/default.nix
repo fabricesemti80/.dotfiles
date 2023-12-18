@@ -1,5 +1,9 @@
 { config, lib, pkgs, vars, ... }:
 
 {
-  imports = [ ];
+  imports = [
+
+    ./docker.nix
+
+  ];
 }
