@@ -117,7 +117,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs vars; };
           modules = [
-            ./users/fabrice/home.nix
+            ./home/fabrice/home.nix
             {
               home = {
                 username = vars.user;
