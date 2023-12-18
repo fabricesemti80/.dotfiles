@@ -14,21 +14,21 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # # Enable networking
+  # networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
 
-  # Configure keymap in X11
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    xkbVariant = "";
-    # GNOME
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
+  # # Configure keymap in X11
+  # services.xserver = {
+  #   enable = true;
+  #   layout = "us";
+  #   xkbVariant = "";
+  #   # GNOME
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome.enable = true;
+  # };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -57,12 +57,12 @@
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "fabrice";
 
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+  # systemd.services."getty@tty1".enable = false;
+  # systemd.services."autovt@tty1".enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # # Allow unfree packages
+  # nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
