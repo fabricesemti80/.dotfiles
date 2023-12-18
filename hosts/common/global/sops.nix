@@ -5,7 +5,7 @@
   # path to the file containing secrets
   sops = {
     # relative path to secret file; NO quotes!
-    defaultSopsFile = ../../secrets/super_secrets.yaml;
+    defaultSopsFile = ../secrets/super_secrets.yaml;
 
     # path to an automatically generated (by the OS) SSH key; do this on ALL machines that need the secrets!
     # run: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'

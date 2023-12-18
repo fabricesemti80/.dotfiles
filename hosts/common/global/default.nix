@@ -3,7 +3,8 @@
 {
   imports = [
 
-    ./global
+    ./packages.nix
+    ./sops.nix
 
   ];
 }
