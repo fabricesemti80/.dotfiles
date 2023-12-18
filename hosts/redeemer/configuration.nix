@@ -73,30 +73,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fabrice = {
-    isNormalUser = true;
-    description = "Fabrice Semti";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      curl
-      firefox
-      nano
-      nixpkgs-fmt
-      tailscale
-      vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    ];
-  };
-
-  ## SSH Users
-  users.users."fabrice".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com" # content of authorized_keys file
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDl0ivGFV8D/M53/qvRRkfxkKgY3635xDiiLQwFgrWon fabrice@fabricesemti.com"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIX2Y3nmVHNxNCNV+WXHeBEcXFS0XYDnNWxzm9oAIyFa fabrice@fabricesemti.com"
-    # note: ssh-copy-id will add user@your-machine after the public key
-    # but we can remove the "@your-machine" part
-  ];
-
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "fabrice";

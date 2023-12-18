@@ -5,6 +5,8 @@
 
     ../common/global
 
+    ../common/users/fabrice
+
     ../common/optional/docker.nix
 
     ./configuration.nix
