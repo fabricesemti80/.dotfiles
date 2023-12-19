@@ -5,6 +5,7 @@
 
     ./locals.nix
     ./packages.nix
+    ./users.nix
 
     ./programs
     ./services

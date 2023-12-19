@@ -4,6 +4,9 @@
   imports = [
 
     ./xserver.nix
+    ./sound.nix
+    ./openssh.nix
+    ./tailscale.nix
 
   ];
 }
