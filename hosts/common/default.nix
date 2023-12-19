@@ -1,5 +1,12 @@
 { config, lib, pkgs, vars, ... }:
 
 {
-  imports = [ ./packages.nix ./programs ./services ];
+  imports = [
+
+    ./locals.nix
+    ./packages.nix
+
+    ./programs
+    ./services
+  ];
 }
