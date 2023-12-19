@@ -147,6 +147,20 @@
           specialArgs = { inherit inputs outputs vars; };
         };
 
+        # Maul is a Physical mini PC
+        maul = lib.nixosSystem {
+          # inherit system;
+          modules = [
+            ./hosts/default.nix # default configuration for ALL hosts
+            ./hosts/common # default packages for ALL hosts
+            ./hosts/maul # configuration specific to THIS host
+            sops-nix.nixosModules.sops
+            vscode-server.nixosModules.default
+            ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
+          ];
+          specialArgs = { inherit inputs outputs vars; };
+        };
+
       };
     };
 }
