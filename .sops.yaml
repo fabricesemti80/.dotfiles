@@ -1,30 +1,26 @@
-# To re-encrypt any sops-encrypted secrets files after changing keys in this file, use:
-#   sops updatekeys secrets/host/filename.yaml
+---
+
+#! To add - MACHINE - keys:
+# 1. Generate new key on another Nix-machine: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+# 2. Add a new entry for the machine and specify this in the creation rules by adding the public key, ie. age1gvccm4tcncykmegm0x2qthdku748p8s4dcwh99c80llnd4ly0eaqevpdk2
+# 3a. Decryot and encryot the secrets:
+#   - sops -d -i secrets/super_secrets.yaml # decrypt
+#   - sops -e -i secrets/super_secrets.yaml # encrypt
+# or
+# 3b. Update secret
+#   - sops updatekeys secrets/super_secrets.yaml
+#! To add USER keys:
+# 1. Create a directory to store your age keys: mkdir -p ~/.config/sops/age
+# 2. Place the private key(s) of yours from Password manager (ie. 1Password) into the file ~/.config/sops/age/keys.txt
+# 3. Follow steps 2 - from the MACHINE guide
+
 # ? ref: https://github.com/anoadragon453/dotfiles/commit/894827f3013d87e49a6ae1e22ea8621c7116654e#diff-a566a585e0557100ce61bf3777660a8aa5e3e56e7e89836392469bd5163663c1
 keys:
-  # Key fingerprints of administrators of the system.
-  #
-  # To add a new entry:
-  #
-  # 1. Create a directory to store your age keys: `mkdir -p ~/.config/sops/age`
-  # 2. Generate an age key on your computer: `age-keygen -o ~/.config/sops/age/keys.txt`
-  # 3. Place the public key that you're given here. If you need to find it again, use:
-  #    `age-keygen -y ~/.config/sops/age/keys.txt`
+
   - &user_fabrice_primary age1pe3qfuzzgkmfn0yg9ezehw2kkftaj30evvck705hs9gmdv3vhqdsu44hl2
-  # Key fingerprints for hosts in my infrastructure.
-  #
-  # To add a new entry:
-  #
-  # 1. Build a VM variant of the host: `nixos-rebuild --flake .#hostname build-vm
-  # 2. Boot the VM: `QEMU_NET_OPTS="hostfwd=tcp::2222-:22" ...`
-  # 3. SSH in: `ssh -p2222 root@localhost`
-  # 4. Extract the public key: `cat /var/lib/sops-nix/key.txt` and add it below.
-  # 5. This file should be copied to the same location on the host before deploying it:
-  #    ssh root@REMOTE_HOST 'mkdir -p /var/lib/sops-nix' \
-  #        && ssh -p2222 root@localhost 'cat /var/lib/sops-nix/key.txt' \
-  #        | ssh root@REMOTE_HOST 'cat > /var/lib/sops-nix/key.txt'
-  - &vm age10vwwse7fjh75etda00kxtsxatwq60uvy6f4vsxkpx9xm8nz5hquqn7tgck
-  - &legacy_vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
+  - &machine_revan age10vwwse7fjh75etda00kxtsxatwq60uvy6f4vsxkpx9xm8nz5hquqn7tgck
+  - &machine_maul age1gvccm4tcncykmegm0x2qthdku748p8s4dcwh99c80llnd4ly0eaqevpdk2
+  - &machine_legacy_vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
 # This section determines the keys that secrets under certain folder paths are encrypted for.
 # (AKA which keys (key_groups) can decrypt which secrets (path_regex))  
 creation_rules:
@@ -34,5 +30,6 @@ creation_rules:
     - pgp: []
       age:
       - *user_fabrice_primary
-      - *vm
-      - *legacy_vm
+      - *machine_revan
+      - *machine_maul
+      - *machine_legacy_vm
