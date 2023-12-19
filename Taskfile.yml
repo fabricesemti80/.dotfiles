@@ -27,10 +27,10 @@ tasks:
     cmds:
       - nix flake update
 
-  nix-host-redeemer:
-    desc: Apply configuration --> host / redeemer
+  nix-host-revan:
+    desc: Apply configuration --> host / revan
     cmds:
-      - sudo nixos-rebuild switch --flake .#redeemer
+      - sudo nixos-rebuild switch --flake .#revan
 
   nix-host-current:
     desc: Apply configuration --> host / $(hostname)

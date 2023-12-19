@@ -9,7 +9,7 @@
       allowedTCPPorts = [ ];
       allowedUDPPorts = [ ];
     };
-    hostName = "redeemer";
+    hostName = "revan";
     networkmanager.enable = true;
   };
 

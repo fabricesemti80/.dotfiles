@@ -133,13 +133,13 @@
       #? these are the hosts
       nixosConfigurations = {
 
-        # Redeemer is a test VM on Proxmox
-        redeemer = lib.nixosSystem {
+        # Revan is a test VM on Proxmox
+        revan = lib.nixosSystem {
           # inherit system;
           modules = [
             ./hosts/default.nix # default configuration for ALL hosts
             ./hosts/common # default packages for ALL hosts
-            ./hosts/redeemer # configuration specific to THIS host
+            ./hosts/revan # configuration specific to THIS host
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
