@@ -40,6 +40,16 @@
         # group = vars.user.group;
         path = "/home/${vars.user}/.gnupg/private.gpg";
       };
+      id_ed25519_pub = {
+        owner = vars.user;
+        # group = vars.user.group;
+        path = "/home/${vars.user}/.ssh/id_ed25519.pub";
+      };
+      allowed_signers = {
+        owner = vars.user;
+        # group = vars.user.group;
+        path = "/home/${vars.user}/.ssh/allowed_signers";
+      };
     };
 
     # sops.secrets."myservice/my_subdir/my_secret" = { };

@@ -29,8 +29,8 @@ let
 
 in {
   home.file = {
-    ".ssh/id_ed25519.pub".text = "${vars.pubKey}"; # TODO: move to SSH config
-    ".ssh/allowed_signers".text = "${vars.pubKey}";
+    # ".ssh/id_ed25519.pub".text = "${vars.pubKey}"; # TODO: move to SSH config
+    # ".ssh/allowed_signers".source = ~/.ssh/id_ed25519.pub;
     ".gitignore".text = ''
       vscode/**
     '';
@@ -53,8 +53,8 @@ in {
       # ? ref: "https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/"
       commit.gpgsign = true;
       gpg.format = "ssh";
-      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      user.signingkey = "~/.ssh/id_ed25519.pub";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers"; # see: sops.nix
+      user.signingkey = "~/.ssh/id_ed25519.pub"; # see: sops.nix
 
       pull.rebase = true;
       rebase.autoStash = true;
