@@ -3,7 +3,12 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./configuration.nix
-    ./packages.nix  
+    ./bootloader.nix
+
+    ./packages.nix
+
     ./hardware-configuration.nix
+    ./networking.nix
+
   ];
 }
