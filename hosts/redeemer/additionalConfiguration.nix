@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
-  home.file = {
-    ".config/i3/config".source = ./i3/i3config;
-    ".config/i3status/config".source = ./i3/i3statusconfig;
-  };
-
   # paste your boot config here...
 
   networking = {
@@ -15,7 +9,7 @@
       allowedTCPPorts = [ ];
       allowedUDPPorts = [ ];
     };
-    hostName = "Nimbus-2021";
+    hostName = "redeemer";
     networkmanager.enable = true;
   };
 
