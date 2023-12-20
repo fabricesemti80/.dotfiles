@@ -36,20 +36,20 @@
     #   inputs.emacs-overlay.follows = "emacs-overlay";
     # };
 
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland = {
+    #   url = "github:hyprwm/hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    hyprwm-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprwm-contrib = {
+    #   url = "github:hyprwm/contrib";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    hyprland-plugins = {
-      url = "github:misterio77/hyprland-plugins/flake-winwrap";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland-plugins = {
+    #   url = "github:misterio77/hyprland-plugins/flake-winwrap";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     # plasma-manager = { # KDE Plasma User Settings Generator #TODO: activate if used
     #   url = "github:pjones/plasma-manager";
