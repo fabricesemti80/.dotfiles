@@ -1,5 +1,10 @@
 { config, lib, pkgs, vars, ... }:
 
 {
-  imports = [ ];
+  imports = [
+
+    ./printing.nix
+    ./openssh.nix
+
+  ];
 }

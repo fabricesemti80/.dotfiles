@@ -32,6 +32,11 @@ tasks:
     cmds:
       - sudo nixos-rebuild switch --flake .#redeemer
 
+  nix-host-enforcer:
+    desc: Apply configuration --> host / enforcer
+    cmds:
+      - sudo nixos-rebuild switch --flake .#enforcer
+
   nix-host-current:
     desc: Apply configuration --> host / $(hostname)
     cmds:

@@ -109,7 +109,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs vars; };
           modules = [
-            ./users/fabrice/home.nix
+            ./home/fabrice/home.nix
             {
               home = {
                 username = vars.user;
@@ -129,9 +129,23 @@
         redeemer = lib.nixosSystem {
           # inherit system;
           modules = [
-            ./hosts/default.nix # default configuration for ALL hosts
+            # ./hosts/default.nix # default configuration for ALL hosts
             ./hosts/common # default packages for ALL hosts
             ./hosts/redeemer # configuration specific to THIS host
+            sops-nix.nixosModules.sops
+            vscode-server.nixosModules.default
+            ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
+          ];
+          specialArgs = { inherit inputs outputs vars; };
+        };
+
+        # Enforcer is a test mini PC
+        enforcer = lib.nixosSystem {
+          # inherit system;
+          modules = [
+            # ./hosts/default.nix # default configuration for ALL hosts
+            ./hosts/common # default packages for ALL hosts
+            ./hosts/enforcer # configuration specific to THIS host
             sops-nix.nixosModules.sops
             vscode-server.nixosModules.default
             ({ config, pkgs, ... }: { services.vscode-server.enable = true; })
