@@ -4,7 +4,8 @@
   imports = [
 
     # desktop environment
-    ./desktops/gnome.nix
+    # ../common/desktops/gnome.nix
+    ../common/desktops/kde.nix
 
     # enabled services
     ./services/sound.nix
