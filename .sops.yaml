@@ -34,7 +34,7 @@
 keys:
 
   - &user_fabrice_primary age1pe3qfuzzgkmfn0yg9ezehw2kkftaj30evvck705hs9gmdv3vhqdsu44hl2
-  - &host_vm age10vwwse7fjh75etda00kxtsxatwq60uvy6f4vsxkpx9xm8nz5hquqn7tgck
+  - &host_vm age1rv5gn43rjdwla6t9wgz32tz4cvrfuh2ghwj3gwy5p3q3um02v93szjyss9
   - &host_legacy_vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
   - &host_test_machine age1gvccm4tcncykmegm0x2qthdku748p8s4dcwh99c80llnd4ly0eaqevpdk2
 
