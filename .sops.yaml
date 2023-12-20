@@ -1,30 +1,43 @@
-# To re-encrypt any sops-encrypted secrets files after changing keys in this file, use:
-#   sops updatekeys secrets/host/filename.yaml
-# ? ref: https://github.com/anoadragon453/dotfiles/commit/894827f3013d87e49a6ae1e22ea8621c7116654e#diff-a566a585e0557100ce61bf3777660a8aa5e3e56e7e89836392469bd5163663c1
+##! NOTES >>
+##! source: https://github.com/Mic92/sops-nix
+
+#? PERSONAL keys
+# 1. We first make sure that the neccesary directory exists:
+#   - mkdir -p ~/.config/sops/age
+# 2a. If we have an existing key(s), stored for example in 1Password, we put the PRIVATE key(s) to '~/.config/sops/age/keys.txt' 
+# 2b. Alternatively we can generate a new key with age:
+#   - age-keygen -o ~/.config/sops/age/keys.txt
+# 2c. Alternatively we can generate a key from an ssh key:
+#   - nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
+# 3. We than update the encryption on an EXISTING system, by:
+#    - Updating the encryption rules in '.sops.yaml' using the '- &user_bar age.......' and '- *user_bar'  lines, where 'age.......' is the new public key matching to the private key
+# 4a. Next we update - re-encrypt the secrets:
+#   - sops updatekeys hosts/common/secrets/super_secrets.yaml
+# 4b. Or we can create new secrets
+#   - sops secrets/example.yaml
+# 5. We than commit the changes and 'git pull' these to the new system
+
+#? MACHINE keys
+# 1. For all new machine we need a new key, so we run this on the NEW system:
+#   - nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+# 2. We than update the encryption on an EXISTING system, by:
+#    - Updating the encryption rules in '.sops.yaml' using the '- &host_foo age.......' and '- *host_foo'  lines, where 'age.......' is the new public key from the new system
+# 3a. Next we update - re-encrypt the secrets:
+#   - sops updatekeys hosts/common/secrets/super_secrets.yaml
+# 3b. Or we can create new secrets
+#   - sops secrets/example.yaml
+# 4. We than commit the changes and 'git pull' these to the new system
+
+##! << NOTES
+
+
 keys:
-  # Key fingerprints of administrators of the system.
-  #
-  # To add a new entry:
-  #
-  # 1. Create a directory to store your age keys: `mkdir -p ~/.config/sops/age`
-  # 2. Generate an age key on your computer: `age-keygen -o ~/.config/sops/age/keys.txt`
-  # 3. Place the public key that you're given here. If you need to find it again, use:
-  #    `age-keygen -y ~/.config/sops/age/keys.txt`
+
   - &user_fabrice_primary age1pe3qfuzzgkmfn0yg9ezehw2kkftaj30evvck705hs9gmdv3vhqdsu44hl2
-  # Key fingerprints for hosts in my infrastructure.
-  #
-  # To add a new entry:
-  #
-  # 1. Build a VM variant of the host: `nixos-rebuild --flake .#hostname build-vm
-  # 2. Boot the VM: `QEMU_NET_OPTS="hostfwd=tcp::2222-:22" ...`
-  # 3. SSH in: `ssh -p2222 root@localhost`
-  # 4. Extract the public key: `cat /var/lib/sops-nix/key.txt` and add it below.
-  # 5. This file should be copied to the same location on the host before deploying it:
-  #    ssh root@REMOTE_HOST 'mkdir -p /var/lib/sops-nix' \
-  #        && ssh -p2222 root@localhost 'cat /var/lib/sops-nix/key.txt' \
-  #        | ssh root@REMOTE_HOST 'cat > /var/lib/sops-nix/key.txt'
-  - &vm age10vwwse7fjh75etda00kxtsxatwq60uvy6f4vsxkpx9xm8nz5hquqn7tgck
-  - &legacy_vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
+  - &host_vm age10vwwse7fjh75etda00kxtsxatwq60uvy6f4vsxkpx9xm8nz5hquqn7tgck
+  - &host_legacy_vm age1s4uqdm7hmaev4h2m0sf7qk5wxddke6rhem0gqeegpgpdav04fyqq5r9fkn
+  - &host_test_machine age1gvccm4tcncykmegm0x2qthdku748p8s4dcwh99c80llnd4ly0eaqevpdk2
+
 # This section determines the keys that secrets under certain folder paths are encrypted for.
 # (AKA which keys (key_groups) can decrypt which secrets (path_regex))  
 creation_rules:
@@ -34,5 +47,6 @@ creation_rules:
     - pgp: []
       age:
       - *user_fabrice_primary
-      - *vm
-      - *legacy_vm
+      - *host_vm
+      - *host_legacy_vm
+      - *host_test_machine
