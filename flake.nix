@@ -51,11 +51,11 @@
     #   inputs.hyprland.follows = "hyprland";
     # };
 
-    # plasma-manager = { # KDE Plasma User Settings Generator #TODO: activate if used
-    #   url = "github:pjones/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "nixpkgs";
-    # };
+    plasma-manager = { # KDE Plasma User Settings Generator
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "nixpkgs";
+    };
 
     home-manager = { # User Environment Manager
       url = "github:nix-community/home-manager/release-23.11";

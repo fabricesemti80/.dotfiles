@@ -280,6 +280,29 @@
         "type": "github"
       }
     },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "nixpkgs"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1703062826,
+        "narHash": "sha256-IvXgGfpthN9xO/SRptSjLp/VuviMNEG2sLYYTo6/H7Y=",
+        "owner": "pjones",
+        "repo": "plasma-manager",
+        "rev": "560571e8be0862df295bbd2aa0715d8bda28ebda",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pjones",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -313,6 +336,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "nur": "nur",
+        "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "vscode-server": "vscode-server"
       }
