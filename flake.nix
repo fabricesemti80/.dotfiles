@@ -129,7 +129,7 @@
         redeemer = lib.nixosSystem {
           # inherit system;
           modules = [
-            ./hosts/default.nix # default configuration for ALL hosts
+            # ./hosts/default.nix # default configuration for ALL hosts
             ./hosts/common # default packages for ALL hosts
             ./hosts/redeemer # configuration specific to THIS host
             sops-nix.nixosModules.sops

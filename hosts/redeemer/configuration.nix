@@ -23,8 +23,8 @@
 
   # List services that you want to enable:
 
-  ## FONTS
-  fonts.fontconfig.enable = true;
+  # ## FONTS
+  # fonts.fontconfig.enable = true;
 
   ## Make ready for NixFlakes!
   nix.package = pkgs.nixFlakes;
