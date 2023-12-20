@@ -5,7 +5,7 @@
   users.users.fabrice = {
     isNormalUser = true;
     description = "Fabrice Semti";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "root" "networkmanager" "wheel" ];
     packages = with pkgs; [
       curl
       firefox
@@ -18,7 +18,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDl0ivGFV8D/M53/qvRRkfxkKgY3635xDiiLQwFgrWon fabrice@fabricesemti.com"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIX2Y3nmVHNxNCNV+WXHeBEcXFS0XYDnNWxzm9oAIyFa fabrice@fabricesemti.com"
-
     ];
   };
 
