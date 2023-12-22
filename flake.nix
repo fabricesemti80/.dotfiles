@@ -7,18 +7,18 @@
     nixpkgs.url =
       "github:nixos/nixpkgs/release-23.11"; # Unstable Nix Packages (Default)
 
-    nixpkgs-unstable.url =
-      "github:nixos/nixpkgs/nixos-unstable"; # Stable Nix Packages
+    # nixpkgs-unstable.url =
+    #   "github:nixos/nixpkgs/nixos-unstable"; # Stable Nix Packages
 
-    nur = { # NUR Community Packages
-      url =
-        "github:nix-community/NUR"; # Requires "nur.nixosModules.nur" to be added to the host modules
-    };
+    # nur = { # NUR Community Packages
+    #   url =
+    #     "github:nix-community/NUR"; # Requires "nur.nixosModules.nur" to be added to the host modules
+    # };
 
-    nixgl = {
-      url = "github:guibou/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs"; # ? Fixes OpenGL With Other Distros.
-    };
+    # nixgl = {
+    #   url = "github:guibou/nixGL";
+    #   inputs.nixpkgs.follows = "nixpkgs"; # ? Fixes OpenGL With Other Distros.
+    # };
 
     nixvim = { # Neovim
       url = "github:nix-community/nixvim";

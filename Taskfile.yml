@@ -30,17 +30,17 @@ tasks:
   nix-host-redeemer:
     desc: Apply configuration --> host / redeemer
     cmds:
-      - sudo nixos-rebuild switch --flake .#redeemer
+      - sudo nixos-rebuild switch --flake .#redeemer --verbose
 
   nix-host-enforcer:
     desc: Apply configuration --> host / enforcer
     cmds:
-      - sudo nixos-rebuild switch --flake .#enforcer
+      - sudo nixos-rebuild switch --flake .#enforcer --verbose
 
   nix-host-current:
     desc: Apply configuration --> host / $(hostname)
     cmds:
-      - sudo nixos-rebuild switch --flake .#    
+      - sudo nixos-rebuild switch --flake .# --verbose
  
   nix-user-fabrice:
     desc: Apply configuration --> user / fabrice

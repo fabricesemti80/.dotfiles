@@ -8,7 +8,7 @@
     extraGroups = [ "root" "networkmanager" "wheel" ];
     packages = with pkgs; [
       curl
-      firefox
+      # firefox
       nano
       nixpkgs-fmt
       tailscale
